@@ -211,3 +211,9 @@ count_2m1_w <- 3
 total_count_2m1 <- 3
 
 plot_posterior(p_grid,compute_posterior(count_w = count_2m1_w,total_count = total_count_2m1, prior = prior ))
+
+##solve for 2m2
+count_2m2_w <- 3
+totalA_count_2m2 <-4
+
+plot_posterior(p_grid,compute_posterior(count_w = count_2m2_w,total_count = totalA_count_2m2,prior = prior))

@@ -206,20 +206,39 @@ plot_posterior <- function(x,y){
   mtext(title)
 } 
 
-##Solve for 2m1 w,w,w
+##Solve for 2m1 1 w,w,w
 count_2m1_w <- 3
 total_count_2m1 <- 3
 
 plot_posterior(p_grid,compute_posterior(count_w = count_2m1_w,total_count = total_count_2m1, prior = prior ))
 
-##solve for 2m2 (2) W, W, W, L
+##solve for 2m1 2 (2) W, W, W, L
 count_2m2_w <- 3
 total_count_2m2 <-4
 
 plot_posterior(p_grid,compute_posterior(count_w = count_2m2_w,total_count = total_count_2m2,prior = prior))
 
-##solve for 2m3  L, W, W, L, W, W, W
+##solve for 2m1 3  L, W, W, L, W, W, W
 count_2m3_w <- 5
 total_count_2m3 <- 7
 
 plot_posterior(p_grid,compute_posterior(count_w = count_2m3_w,total_count = total_count_2m3,prior = prior))
+
+##solve for 2m2 
+prior <- ifelse( test = p_grid < 0.5, yes =0, no =1)
+count_2m1_w <- 3
+total_count_2m1 <- 3
+plot_posterior(p_grid,compute_posterior(count_w = count_2m1_w,total_count = total_count_2m1, prior = prior ))
+
+prior <- ifelse( test = p_grid < 0.5, yes =0, no =1)
+count_2m2_w <- 3
+total_count_2m2 <-4
+
+plot_posterior(p_grid,compute_posterior(count_w = count_2m2_w,total_count = total_count_2m2,prior = prior))
+
+prior <- ifelse( test = p_grid < 0.5, yes =0, no =1)
+count_2m3_w <- 5
+total_count_2m3 <- 7
+
+plot_posterior(p_grid,compute_posterior(count_w = count_2m3_w,total_count = total_count_2m3,prior = prior))
+

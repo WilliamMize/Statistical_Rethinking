@@ -242,3 +242,19 @@ total_count_2m3 <- 7
 
 plot_posterior(p_grid,compute_posterior(count_w = count_2m3_w,total_count = total_count_2m3,prior = prior))
 
+##solve for 2m3
+##posterior = likelihood X prior / sum of all(likelihood X prior)
+
+likelihood_2m3 <- c(0.3,1)
+
+#prior because it is the step before, like in the marble example
+
+prior_2m3 <- c(0.5,0.5)
+
+unstandardized.posterior_2m3 <- likelihood_2m3*prior_2m3
+
+posterior_2m3 <- unstandardized.posterior/sum(unstandardized.posterior_2m3)
+
+#both posteriors are in here for each one, so select first element since it is earth
+print(posterior_2m3[1])
+

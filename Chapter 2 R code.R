@@ -114,6 +114,31 @@ curve( dnorm( x , 0.67 , 0.16 ) , lty=2 , add=TRUE )
 
 
 ##### Home Work 2m)
+
+#define a grid, seq of numbers 0 to 1 
+p_grid <- seq(from =0, to = 1, length.out = 20)
+#defin the prior
+prior <- rep(1,20)
+#compute the likelihood at each value in grid
+likelihood <- dbinom(x=3,size=3,prob=p_grid)
+#unstd.posterior 
+unstd.posterior <- likelihood * prior
+posterior <- unstd.posterior/sum(unstd.posterior)
+print(posterior)
+plot(p_grid,posterior)
+
+
+
+
+
+
+
+
+
+
+
+
+
 #First define the grid equi distance 0 to 1
 p_grid <- seq( from=0, to =1, length.out=20)
 
@@ -257,4 +282,107 @@ posterior_2m3 <- unstandardized.posterior/sum(unstandardized.posterior_2m3)
 
 #both posteriors are in here for each one, so select first element since it is earth
 print(posterior_2m3[1])
+
+
+#2m4
+
+
+## 2M5
+card.1.likelihood <- 2
+card.2.likelihood <- 1
+card.3.likelihood <- 0
+card.4.likelihood <- 2
+likelihood <- c(card.1.likelihood, card.2.likelihood, card.3.likelihood, card.4.likelihood)
+prior <- rep(x = 1, length = length(likelihood))
+unstandardized.posterior <- prior * likelihood
+posterior <- unstandardized.posterior / sum(unstandardized.posterior)
+
+# the probability the other size is black is equal to the probability that we've drawn card 1 or 4
+posterior[1] + posterior[4]
+
+
+## 2M6
+card.1.likelihood <- 2
+card.2.likelihood <- 1
+card.3.likelihood <- 0
+likelihood <- c(card.1.likelihood,card.2.likelihood,card.3.likelihood)
+prior <- c(1,2,3)
+unstandardized.posterior <- prior*likelihood
+posterior <- unstandardized.posterior/sum(unstandardized.posterior)
+print(posterior[1])
+
+
+##2h1
+prob.twins.species1 <- .1
+prob.twins.species2 <- .2
+likelihood <- c(prob.twins.species1,prob.twins.species2)
+prior <- c(1,1)
+unstandardized.posterior <- likelihood*prior
+posterior <- unstandardized.posterior*prior/sum(unstandardized.posterior*prior)
+new_posterior <- likelihood*posterior/sum(posterior)
+print(sum(new_posterior))
+##2h2
+
+prob.twins.species1 <- .1
+prob.twins.species2 <- .2
+likelihood <- c(prob.twins.species1,prob.twins.species2)
+prior <- c(1,1)
+unstandardized.posterior <- likelihood*prior
+posterior <- unstandardized.posterior*prior/sum(unstandardized.posterior*prior)
+print(posterior[1])
+
+##2h3
+
+prob.twins.species1 <- .1
+prob.twins.species2 <- .2
+likelihood <- c(prob.twins.species1,prob.twins.species2)
+prior <- c(1,1)
+unstandardized.posterior <- likelihood*prior
+posterior <- unstandardized.posterior*prior/sum(unstandardized.posterior*prior)
+print(posterior[1])
+#use the same 2h2 as above then new single baby
+prob1.single.species1 <- .9
+prob2.single.species2 <- .8
+likelihood.single <- c(prob1.single.species1,prob2.single.species2)
+new_post <- posterior*likelihood.single/sum(posterior*likelihood.single)
+
+print(new_post[1])
+#2h4
+prob.specA <- .8
+## 1 - specic B panda .65 because we are wanting to know probability that it is species A
+prob.specB <- 1 - .65
+likelihood <- c(prob.specA,prob.specB)
+prior <- c(1,1)
+unstandardized.posterior <- likelihood*prior
+posterior <- unstandardized.posterior/sum(unstandardized.posterior)
+print(posterior[1])
+
+##then do 2h4.2 do 2h3 again
+prob.twins.species1 <- .1
+prob.twins.species2 <- .2
+likelihood <- c(prob.twins.species1,prob.twins.species2)
+prior <- c(1,1)
+unstandardized.posterior <- likelihood*prior
+posterior <- unstandardized.posterior*prior/sum(unstandardized.posterior*prior)
+print(posterior[1])
+#use the same 2h2 as above then new single baby
+prob1.single.species1 <- .9
+prob2.single.species2 <- .8
+likelihood.single <- c(prob1.single.species1,prob2.single.species2)
+twin.single.new_post <- posterior*likelihood.single/sum(posterior*likelihood.single)
+###test posterior find, 
+prob.specA <- .8
+## 1 - specic B panda .65 because we are wanting to know probability that it is species A
+prob.specB <- 1 - .65
+likelihood <- c(prob.specA,prob.specB)
+prior <- c(1,1)
+unstandardized.posterior <- likelihood*prior
+cow.test.posterior <- unstandardized.posterior/sum(unstandardized.posterior)
+
+
+unstandardized.composit_post <- cow.test.posterior * twin.single.new_post
+composit_post <- unstandardized.composit_post/sum(unstandardized.composit_post)
+print(composit_post[1])
+##0.5625
+
 
